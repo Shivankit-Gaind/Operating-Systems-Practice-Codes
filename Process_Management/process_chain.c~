@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<unistd.h>
+#include<stdlib.h>
+#include<sys/types.h>
+
+int main(int argc, char *argv[])
+{
+	pid_t childpid = 0;
+	int i,n;
+	if(argc != 2){
+		fprintf(stderr,"Usage: %s processes \n",argv[0]);
+		return 1;
+	}
+	n = atoi(argv[1]);
+	for(i = 1; i<=n;i++)
+		if(childpid = fork())
+			//break;
+			printf("Process i = %d, its pid = %ld \n",i,(long)getpid());
+			
+		else
+			printf("Child Process i = %d, its pid = %ld \n",i,(long)getpid());
+	
+}
+
+/* Output
+
+mayuri@mayuri-Latitude-E5450:~/Sem_I_2017_18/OS/Programs/Process_Management$ ./a.out 4
+Process i = 1, its pid = 4502 
+Process i = 2, its pid = 4503 
+Process i = 3, its pid = 4504 
+Process i = 4, its pid = 4505 
+
+*/

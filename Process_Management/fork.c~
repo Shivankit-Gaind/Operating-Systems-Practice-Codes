@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<unistd.h>
+
+int main()
+{
+	int x,pid,mypid;
+	x = 0;
+	mypid = getpid();
+	printf("Before fork value of x = %d in parent process = %ld, mypid=%d\n",x,(long)getpid(), mypid);
+	pid = fork();
+	if(pid == -1){
+		printf("Failed to fork\n");
+		return 0;
+	}
+	if(pid == 0){
+		x = 1;
+		printf("I am child process %ld and my x is %d mypid = %d\n",(long)getpid(),x,mypid);
+	}
+	else{
+		x = 2;
+		printf("I am parent process %ld and my x is %d mypid = %d\n",(long)getpid(),x,mypid);
+	}
+
+		
+}
+
+/* Output
+mayuri@mayuri-Latitude-E5450:~$ ./a.out 
+Before fork value of x = 0 in parent process = 3935
+I am parent process 3935 and my x is 2 
+I am child process 3936 and my x is 1 
+*/
+

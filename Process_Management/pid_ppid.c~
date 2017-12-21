@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<unistd.h>
+
+int main() {
+printf("I am process %ld\n",(long)getpid());
+printf("My Parent is %ld\n",(long)getppid());
+}
+
+/* output
+mayuri@mayuri-Latitude-E5450:~$ ./a.out 
+I am process 3193
+My Parent is 2981
+*/
+
